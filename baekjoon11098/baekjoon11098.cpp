@@ -5,7 +5,6 @@ int main() {
     int n, p[100] = { 0, };
     int pay[100] = { 0, };
     char name[100][21];
-    char expName[100][21];
     int mostExp = 0;
     int expPos;
 
