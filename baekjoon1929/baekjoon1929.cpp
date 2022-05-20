@@ -1,25 +1,26 @@
 #include<iostream>
-#include<stdio.h>
-//#include<algorithm>
-
 using namespace std;
-int pr[1000000];
 
 int main(void) {
-	int a, b, pos = 0;
+	int a, b;
+	bool* pr;
 
 	cin >> a >> b;
+	pr = new bool[b + 1]; //동적할당
 
-	for (int i = 0; i <= b; i++) pr[i] = i;
+	fill_n(pr, b + 1, 1); //채우기
+	pr[0] = false;
+	pr[1] = false;
 
-	for (int i = a; i <= b; i++) {
-		if (a == 1)pr[1] = 0;
-		if (pr[i] == 0) continue;
-		for (int j = 2 * i; j <= b; j += i) pr[j] = 0;
+	for (int i = 2; i <= sqrt(b); i++) {
+		if (pr[i] == false) continue;
+		for (int j = 2 * i; j <= b; j += i) pr[j] = false;
 	}
 
 	for (int i = a; i <= b; i++)
-		if (pr[i] != 0) printf("%d\n", pr[i]);
+		if (pr[i] == true) cout << i << "\n";
+
+	delete[] pr;
 
 	return 0;
 }
