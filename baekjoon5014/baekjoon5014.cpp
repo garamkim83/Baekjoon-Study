@@ -19,7 +19,7 @@ int bfs() {
 
 		int next[2] = { cur + u,cur - d };
 		for (int i = 0; i < 2; i++) {
-			if (1 <= next[i] && next[i] <= f && visit[next[i]] == 0) {
+			if (1 <= next[i] && next[i] <= f && !visit[next[i]]) {
 				visit[next[i]] = visit[cur] + 1;
 				q.push(next[i]);
 			}
